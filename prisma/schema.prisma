@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// SQLite for local/self-hosted use. For serverless production, change to
+// provider = "postgresql" and set DATABASE_URL accordingly — the schema
+// itself needs no other change.
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Registration to an event (Couples Conference, etc.)
+model EventRegistration {
+  id        String   @id @default(cuid())
+  event     String // event slug, e.g. "couples-conference"
+  names     String
+  email     String
+  campus    String?
+  createdAt DateTime @default(now())
+}
+
+// "Join online" request — someone asking for connection details
+model JoinRequest {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  service   String?
+  source    String?
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}
+
+// Donations recorded from Stripe webhooks (or entered manually later)
+model Donation {
+  id              String   @id @default(cuid())
+  amount          Int // in cents
+  currency        String   @default("usd")
+  interval        String   @default("one_time") // one_time | monthly
+  donorName       String?
+  donorEmail      String?
+  method          String   @default("card") // card | paypal | zelle | interac
+  stripeSessionId String?  @unique
+  status          String   @default("completed")
+  createdAt       DateTime @default(now())
+}

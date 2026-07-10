@@ -19,7 +19,9 @@
   --cream-border: #ece1a8;
   --ice: #E6F9FC;
   --ice-border: #b8ecf5;
-  --display: 'Bricolage Grotesque', sans-serif;
+  /* Font variables are provided by next/font in src/app/layout.tsx */
+  --display: var(--font-display), 'Bricolage Grotesque', sans-serif;
+  --body-font: var(--font-body), 'Figtree', system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -30,14 +32,14 @@ body {
   margin: 0;
   background: #ffffff;
   color: var(--ink);
-  font-family: 'Figtree', system-ui, sans-serif;
+  font-family: var(--body-font);
   -webkit-font-smoothing: antialiased;
 }
 
 a { color: #00A0C0; text-decoration: none; }
 a:hover { color: var(--teal); text-decoration: underline; }
 
-input, select, textarea, button { font-family: 'Figtree', system-ui, sans-serif; }
+input, select, textarea, button { font-family: var(--body-font); }
 input:focus, select:focus, textarea:focus { outline: 2px solid var(--cyan); outline-offset: 1px; }
 
 /* ---------- Layout ---------- */
@@ -780,7 +782,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--cyan); outl
 
 .inline-form-card .form-submit { font-size: 15px; padding: 13px; margin-top: 0; }
 
-.inline-success .success-title { margin: 0; font-weight: 700; font-size: 16px; color: var(--ink); font-family: 'Figtree', system-ui, sans-serif; }
+.inline-success .success-title { margin: 0; font-weight: 700; font-size: 16px; color: var(--ink); font-family: var(--body-font); }
 .inline-success p { margin: 8px 0 0; font-size: 14.5px; color: var(--muted); line-height: 1.6; }
 
 /* ==========================================================================
@@ -873,3 +875,150 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--cyan); outl
 .form-success.ice p { color: #345; }
 .form-success.cream { background: var(--cream); }
 .form-success.cream p { color: #554; }
+
+/* ==========================================================================
+   Form feedback + card giving
+   ========================================================================== */
+
+.form-error {
+  margin: 0;
+  color: #b3261e;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-submit:disabled { opacity: .6; cursor: default; }
+
+.card-giving { display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
+
+.amount-presets { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.amount-btn {
+  background: #fff;
+  border: 1.5px solid #ddd;
+  border-radius: 999px;
+  padding: 11px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.amount-btn:hover { border-color: var(--ink); }
+.amount-btn.selected { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+.amount-custom {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1.5px solid #ddd;
+  border-radius: 999px;
+  padding: 0 16px;
+  background: #fff;
+  font-weight: 700;
+}
+
+.amount-custom input {
+  border: none;
+  width: 90px;
+  padding: 11px 0;
+  font-size: 15px;
+  font-weight: 700;
+  background: none;
+}
+
+.amount-custom input:focus { outline: none; }
+.amount-custom:focus-within { outline: 2px solid var(--cyan); outline-offset: 1px; }
+
+.interval-toggle {
+  display: inline-flex;
+  gap: 4px;
+  background: #f4f4f4;
+  border-radius: 999px;
+  padding: 4px;
+  align-self: flex-start;
+}
+
+.interval-toggle button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 9px 18px;
+  border-radius: 999px;
+}
+
+.interval-toggle button.selected { background: #fff; color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+
+/* ==========================================================================
+   Admin dashboard
+   ========================================================================== */
+
+.admin-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 44px;
+}
+
+.admin-stat {
+  background: var(--cream);
+  border: 1px solid var(--cream-border);
+  border-radius: 16px;
+  padding: 20px 22px;
+}
+
+.admin-stat .stat-value {
+  margin: 0 0 4px;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 28px;
+}
+
+.admin-stat .stat-label { margin: 0; font-size: 13.5px; color: var(--muted); font-weight: 600; }
+
+.admin-section { margin-bottom: 44px; }
+
+.admin-table-wrap {
+  overflow-x: auto;
+  border: 1px solid #eee;
+  border-radius: 16px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  min-width: 640px;
+}
+
+.admin-table th {
+  text-align: left;
+  font-size: 12.5px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--faint);
+  padding: 14px 16px;
+  border-bottom: 1px solid #eee;
+  background: #fafafa;
+}
+
+.admin-table td {
+  padding: 13px 16px;
+  border-bottom: 1px solid #f2f2f2;
+  vertical-align: top;
+}
+
+.admin-table tr:last-child td { border-bottom: none; }
+.admin-table .message-cell { max-width: 420px; white-space: pre-wrap; }
