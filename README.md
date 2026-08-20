@@ -52,10 +52,7 @@ Three ways to give on `/give`:
 
 ## Database
 
-Prisma with SQLite by default (`prisma/dev.db`, ignored by git) — works
-out of the box on any Node host. For serverless hosting (Vercel…), switch
-`provider` to `postgresql` in `prisma/schema.prisma` and point `DATABASE_URL`
-at a hosted Postgres; the schema needs no other change.
+Prisma with **Postgres (Neon)**. On Vercel, add the Neon integration (Storage → Create Database → Neon) — it injects `DATABASE_URL` and the build syncs the schema automatically (`scripts/sync-db.mjs`). For local dev, point `DATABASE_URL` at a free Neon branch or a local Postgres, then `npm run db:push`.
 
 Models: `EventRegistration`, `JoinRequest`, `ContactMessage`, `Donation`.
 

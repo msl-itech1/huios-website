@@ -2,11 +2,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// SQLite for local/self-hosted use. For serverless production, change to
-// provider = "postgresql" and set DATABASE_URL accordingly — the schema
-// itself needs no other change.
+// Postgres (Neon on Vercel). DATABASE_URL comes from the Neon integration
+// in production; for local dev use a free Neon branch or any local Postgres.
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
