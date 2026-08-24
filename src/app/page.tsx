@@ -36,7 +36,12 @@ export default function HomePage() {
             <div className="service-card">
               <p className="service-region yellow">United States</p>
               <p className="service-time">Saturday · 5:20 PM</p>
-              <p className="service-meta">Eastern Time (ET) · Global Service</p>
+              <p className="service-meta spaced">
+                Eastern Time (ET) · in person in Silver Spring, MD &amp; on Zoom
+              </p>
+              <Link className="btn btn-ghost-dark" href="/campuses">
+                Address &amp; Zoom details
+              </Link>
             </div>
             <div className="service-card">
               <p className="service-region cyan">Canada · online</p>

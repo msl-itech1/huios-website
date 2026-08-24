@@ -44,6 +44,13 @@ const churchJsonLd = {
   logo: `${SITE_URL}/assets/HNW_final2019_03.png`,
   description:
     'A multi-campus church family across the United States, Canada, France, Côte d\'Ivoire, Cameroon and South Africa.',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '2004 Queensguard Rd',
+    addressLocality: 'Silver Spring',
+    addressRegion: 'MD',
+    addressCountry: 'US',
+  },
   areaServed: [
     'United States',
     'Canada',

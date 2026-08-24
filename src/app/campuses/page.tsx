@@ -24,10 +24,22 @@ export default function CampusesPage() {
         <div className="global-card yellow">
           <p className="pill pill-yellow">United States</p>
           <p className="time-big">Saturday · 5:20 PM</p>
-          <p className="time-zone">Eastern Time (ET) · in English</p>
+          <p className="time-zone">Eastern Time (ET) · in English · in person &amp; on Zoom</p>
           <p className="time-note">
-            Our main weekly service for the US campus and everyone who wants to join.
+            Our main weekly service for the US campus and everyone who wants to
+            join — come in person if you&apos;re in the area, or join on Zoom
+            from anywhere.
           </p>
+          <div className="detail-box" style={{ marginTop: '16px' }}>
+            <p className="detail-label">In person — Silver Spring, MD</p>
+            <p className="detail-value">Jan–May: 2004 Queensguard Rd, Silver Spring, MD</p>
+            <p className="detail-sub">Jun–Dec: Wheaton Library, 11701 Georgia Ave</p>
+          </div>
+          <div className="detail-box" style={{ marginTop: '10px' }}>
+            <p className="detail-label">On Zoom</p>
+            <p className="detail-value">Meeting ID: 430 672 8372</p>
+            <p className="detail-sub">Passcode: 4tRumZ</p>
+          </div>
         </div>
         <div className="global-card cyan">
           <p className="pill" style={{ background: '#00BEDF', color: '#111' }}>
