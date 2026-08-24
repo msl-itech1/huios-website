@@ -115,6 +115,40 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--cyan); outl
 
 .nav-cta:hover { background: var(--cyan-hover); color: var(--ink); text-decoration: none; }
 
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: auto;
+  color: var(--ink);
+  border-radius: 8px;
+}
+
+.nav-toggle:hover { background: #f5f5f5; }
+
+/* Mobile: collapse the nav behind a hamburger so the pinned header stays short */
+@media (max-width: 920px) {
+  .nav-toggle { display: flex; align-items: center; }
+
+  .site-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    margin-left: 0;
+    padding: 4px 0 12px;
+  }
+
+  .site-nav.open { display: flex; }
+
+  .nav-link { padding: 12px 8px; font-size: 15.5px; }
+
+  .nav-cta { margin: 8px 8px 0; text-align: center; padding: 13px 20px; }
+}
+
 /* ---------- Buttons ---------- */
 
 .btn {
