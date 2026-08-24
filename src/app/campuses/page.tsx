@@ -14,9 +14,10 @@ export default function CampusesPage() {
       <p className="eyebrow">Campuses &amp; times</p>
       <h1 className="page-title">One family, many time zones.</h1>
       <p className="lead" style={{ maxWidth: '64ch', margin: '0 0 48px' }}>
-        All of our gatherings happen online, so you can join from anywhere. Pick
-        the service that fits your language and your clock. All times below are{' '}
-        <strong>Eastern Time (ET)</strong>.
+        Every gathering is online so you can join from anywhere — and in the
+        US, the Saturday service also meets in person in Silver Spring, MD.
+        Pick the service that fits your language and your clock. All times
+        below are <strong>Eastern Time (ET)</strong>.
       </p>
 
       <h2 className="section-title">Global Services</h2>
