@@ -59,10 +59,14 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--cyan); outl
 
 /* ---------- Header ---------- */
 
-.site-header {
+/* Sticky wrapper pinning the announcement bar and the nav together */
+.site-top {
   position: sticky;
   top: 0;
   z-index: 50;
+}
+
+.site-header {
   background: rgba(255, 255, 255, .95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid #f0f0f0;

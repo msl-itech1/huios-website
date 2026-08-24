@@ -4,7 +4,7 @@ import logo from '../../public/assets/HNW_final2019_03.png';
 
 export default function Header() {
   return (
-    <>
+    <div className="site-top">
       <div className="announcement">
         Global Service — Saturday 5:20 PM ET (United States) &nbsp;·&nbsp; Sunday
         4:00 PM ET (Canada, online)
@@ -25,6 +25,6 @@ export default function Header() {
           </nav>
         </div>
       </header>
-    </>
+    </div>
   );
 }
