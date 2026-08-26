@@ -38,6 +38,19 @@ model ContactMessage {
   createdAt DateTime @default(now())
 }
 
+// Contact messages from a ministry sub-section (e.g. Women's Ministry),
+// which collect a location and a subject the main contact form doesn't.
+model MinistryContactMessage {
+  id        String   @id @default(cuid())
+  ministry  String // e.g. "women"
+  name      String
+  email     String
+  location  String?
+  subject   String?
+  message   String
+  createdAt DateTime @default(now())
+}
+
 // Donations recorded from Stripe webhooks (or entered manually later)
 model Donation {
   id              String   @id @default(cuid())

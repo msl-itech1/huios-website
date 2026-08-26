@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import ImageSlot from '@/components/ImageSlot';
-import { WOMEN_MINISTRY_URL } from '@/lib/site';
 
 export default function HomePage() {
   return (
@@ -114,12 +113,12 @@ export default function HomePage() {
             <div className="preview-body">
               <h3>Women&apos;s Ministry</h3>
               <p>
-                A community of women learning to win in every season — with its
-                own gatherings, teachings and annual conference.
+                One of the ways to connect and grow at Huios Nation World — a
+                community of women learning to stand in who they are in Christ.
               </p>
-              <a className="btn btn-dark" href={WOMEN_MINISTRY_URL} target="_blank" rel="noopener">
-                Visit the Women&apos;s Ministry site
-              </a>
+              <Link className="btn btn-dark" href="/ministries/women">
+                Explore the Women&apos;s Ministry
+              </Link>
             </div>
           </div>
           <div className="preview-card plain">

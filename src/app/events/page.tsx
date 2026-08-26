@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import ImageSlot from '@/components/ImageSlot';
 import EventRegistrationForm from '@/components/EventRegistrationForm';
-import { SITE_URL, WOMEN_MINISTRY_URL } from '@/lib/site';
+import { SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Events',
@@ -19,7 +19,7 @@ const eventsJsonLd = {
       name: "Women's Conference",
       description:
         'A weekend for women from every campus to gather, worship, and be refreshed.',
-      organizer: { '@type': 'Organization', name: "Huios Nation World Women's Ministry", url: WOMEN_MINISTRY_URL },
+      organizer: { '@type': 'Organization', name: "Huios Nation World Women's Ministry", url: `${SITE_URL}/ministries/women` },
       eventStatus: 'https://schema.org/EventScheduled',
       url: `${SITE_URL}/events`,
     },
@@ -61,12 +61,12 @@ export default function EventsPage() {
             <p className="event-date">Date to be announced</p>
             <p className="event-desc">
               A weekend for women from every campus to gather, worship, and be
-              refreshed. Registration and full details live on the Women&apos;s
-              Ministry site.
+              refreshed. Three regional conferences — US, Canada, and Ivory
+              Coast — full schedule on the Women&apos;s Ministry page.
             </p>
-            <a className="btn btn-dark" href={WOMEN_MINISTRY_URL} target="_blank" rel="noopener">
+            <Link className="btn btn-dark" href="/ministries/women/events">
               Details &amp; registration →
-            </a>
+            </Link>
           </div>
         </div>
 

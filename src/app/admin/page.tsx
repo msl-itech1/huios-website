@@ -30,10 +30,11 @@ function formatAmount(cents: number, currency: string): string {
 export default async function AdminPage() {
   if (!(await isAdmin())) redirect('/admin/login');
 
-  const [registrations, joinRequests, contacts, donations] = await Promise.all([
+  const [registrations, joinRequests, contacts, ministryContacts, donations] = await Promise.all([
     prisma.eventRegistration.findMany({ orderBy: { createdAt: 'desc' } }),
     prisma.joinRequest.findMany({ orderBy: { createdAt: 'desc' } }),
     prisma.contactMessage.findMany({ orderBy: { createdAt: 'desc' } }),
+    prisma.ministryContactMessage.findMany({ orderBy: { createdAt: 'desc' } }),
     prisma.donation.findMany({ orderBy: { createdAt: 'desc' } }),
   ]);
 
@@ -69,6 +70,10 @@ export default async function AdminPage() {
         <div className="admin-stat">
           <p className="stat-value">{contacts.length}</p>
           <p className="stat-label">Messages</p>
+        </div>
+        <div className="admin-stat">
+          <p className="stat-value">{ministryContacts.length}</p>
+          <p className="stat-label">Ministry messages</p>
         </div>
         <div className="admin-stat">
           <p className="stat-value">{formatAmount(donationTotal, 'usd')}</p>
@@ -144,6 +149,34 @@ export default async function AdminPage() {
                   <tr key={m.id}>
                     <td>{m.name}</td>
                     <td><a href={`mailto:${m.email}`}>{m.email}</a></td>
+                    <td className="message-cell">{m.message}</td>
+                    <td>{formatDate(m.createdAt)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
+
+      <section className="admin-section">
+        <h2 className="section-title">Ministry messages</h2>
+        {ministryContacts.length === 0 ? (
+          <p className="fine-print">No ministry messages yet.</p>
+        ) : (
+          <div className="admin-table-wrap">
+            <table className="admin-table">
+              <thead>
+                <tr><th>Ministry</th><th>Name</th><th>Email</th><th>Location</th><th>Subject</th><th>Message</th><th>Date</th></tr>
+              </thead>
+              <tbody>
+                {ministryContacts.map((m) => (
+                  <tr key={m.id}>
+                    <td style={{ textTransform: 'capitalize' }}>{m.ministry}</td>
+                    <td>{m.name}</td>
+                    <td><a href={`mailto:${m.email}`}>{m.email}</a></td>
+                    <td>{m.location ?? '—'}</td>
+                    <td>{m.subject ?? '—'}</td>
                     <td className="message-cell">{m.message}</td>
                     <td>{formatDate(m.createdAt)}</td>
                   </tr>

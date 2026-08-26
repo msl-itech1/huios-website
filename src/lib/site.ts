@@ -13,7 +13,51 @@ export const SITE_URL =
 
 export const SITE_NAME = 'Huios Nation World';
 
-export const WOMEN_MINISTRY_URL = 'https://alwayswin.live';
+// Ministries listed on /ministries. Only "women" has its own pages so far —
+// the rest render as "coming soon" cards until their content arrives.
+export const MINISTRIES = [
+  {
+    slug: 'women',
+    name: "Women's Ministry",
+    tagline: 'You were made for more.',
+    description:
+      'A global community of women anchored in who they are, what they have, and where they stand — in Christ.',
+    live: true,
+  },
+  {
+    slug: 'youth',
+    name: 'Youth & Children Ministry',
+    tagline: 'Raising up the next generation.',
+    description: 'For our youngest campus members and the students growing up in our family.',
+    live: false,
+  },
+  {
+    slug: 'couples',
+    name: "Couples Ministry",
+    tagline: 'Investing in marriage, together.',
+    description: 'Honest teaching and community for every couple, married or engaged.',
+    live: false,
+  },
+  {
+    slug: 'men',
+    name: "Men's Ministry",
+    tagline: 'Standing strong, together.',
+    description: 'A community of men growing in their identity and calling in Christ.',
+    live: false,
+  },
+] as const;
+
+// Sub-navigation for the Women's Ministry section (src/app/ministries/women/**)
+export const WOMENS_MINISTRY_NAV = [
+  { href: '/ministries/women', label: 'Home' },
+  { href: '/ministries/women/about', label: 'About' },
+  { href: '/ministries/women/community', label: 'Community' },
+  { href: '/ministries/women/events', label: 'Events' },
+  { href: '/ministries/women/gallery', label: 'Gallery' },
+  { href: '/ministries/women/blog', label: 'Blog' },
+  { href: '/ministries/women/salvation', label: 'Salvation' },
+  { href: '/ministries/women/contact', label: 'Contact' },
+] as const;
 
 export const PAYPAL_DONATE_URL =
   envOrUndefined('NEXT_PUBLIC_PAYPAL_DONATE_URL') ??
